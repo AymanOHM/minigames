@@ -19,7 +19,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('simplechess.urls')),
+    path('', include('hub.urls')),
+    path('simplechess/', include('simplechess.urls')),
     path('simplefps/', include('simplefps.urls')),
     path('simpleplatformer/', include('simpleplatformer.urls')),
 ]

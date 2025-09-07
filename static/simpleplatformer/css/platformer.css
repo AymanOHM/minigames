@@ -1,0 +1,10 @@
+:root{--bg:#071427;--sky1:#7ec0ff;--sky2:#3b8cff;--ground:#0b3b3b;--accent:#ffdd57}
+html,body{min-height:100%;margin:0;background:linear-gradient(180deg,#031022,#071427);font-family:Inter,system-ui;color:#eaf6f3}
+.wrap{width:980px;padding:20px;margin:40px auto}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.controls{display:flex;gap:8px}
+button{background:var(--accent);border:0;padding:10px 14px;border-radius:12px;color:#042024;font-weight:800;cursor:pointer}
+canvas{width:100%;height:380px;border-radius:12px;background:linear-gradient(180deg,var(--sky1),var(--sky2));display:block;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+.hud{display:flex;gap:12px;align-items:center}
+.stat{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:10px}
+.centerTxt{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;color:rgba(255,255,255,0.9);font-size:24px}

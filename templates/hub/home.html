@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Arcadia Games — Launcher{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'hub/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>Arcadia Games</h1>
+        <p class="lead">Three standalone minigames. Click Launch to open a game. Place these files together in your templates or static folder and open with a local server.</p>
+      </div>
+      <div style="text-align:right;color:var(--muted);font-size:13px">Local-first • Lightweight • Modern UI</div>
+    </header>
+
+    <section class="grid" aria-label="Game collection">
+      {% if games %}
+        {% for game in games %}
+          <article class="card" aria-labelledby="game-{{ game.slug }}-title">
+            <div class="meta">
+              <div>
+                <h3 id="game-{{ game.slug }}-title">{{ game.name }}</h3>
+                <div class="desc">{{ game.description }}</div>
+              </div>
+            </div>
+
+            <div class="preview" aria-hidden="true">🎮</div>
+
+            <div class="actions">
+              <a class="play" href="{{ game.link }}">Launch</a>
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <article class="card" aria-labelledby="no-games-title">
+          <div class="meta">
+            <div>
+              <h3 id="no-games-title">No games found</h3>
+              <div class="desc">Add games in the Admin to populate this list.</div>
+            </div>
+          </div>
+          <div class="preview" aria-hidden="true">🗂️</div>
+          <div class="actions">
+            <a class="play" href="{% url 'admin:index' %}">Open Admin</a>
+          </div>
+        </article>
+      {% endif %}
+    </section>
+
+    <footer>Tip: For local development put this file alongside your other HTML files and open via a static server (python -m http.server 8000)</footer>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+  <script src="{% static 'hub/js/home.js' %}"></script>
+{% endblock %}
