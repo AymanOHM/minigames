@@ -28,7 +28,13 @@
               </div>
             </div>
 
-            <div class="preview" aria-hidden="true">🎮</div>
+            <div class="preview" aria-hidden="true">
+              {% if game.thumbnail_url %}
+                <img src="{{ game.thumbnail_url }}" alt="{{ game.name }} thumbnail" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">
+              {% else %}
+                🎮
+              {% endif %}
+            </div>
 
             <div class="actions">
               <a class="play" href="{{ game.link }}">Launch</a>

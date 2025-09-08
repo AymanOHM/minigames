@@ -4,5 +4,5 @@ from .models import Game
 
 
 def home(request):
-    games = Game.objects.all()
+    games = Game.objects.filter(is_active=True)
     return render(request, 'hub/home.html', {"games": games})
