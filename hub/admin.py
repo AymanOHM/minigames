@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Game
+from .models import Game, ContactMessage
 
 
 @admin.register(Game)
@@ -11,3 +11,10 @@ class GameAdmin(admin.ModelAdmin):
     search_fields = ("name", "description", "slug")
     prepopulated_fields = {"slug": ("name",)}
     readonly_fields = ("created_at", "updated_at")
+
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ("name", "email", "created_at")
+    search_fields = ("name", "email", "message")
+    readonly_fields = ("created_at",)

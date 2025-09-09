@@ -32,3 +32,17 @@ class Game(models.Model):
             return self.thumbnail.url  # type: ignore[return-value]
         except Exception:
             return None
+
+
+class ContactMessage(models.Model):
+    """Stores messages submitted via the contact forms."""
+    name = models.CharField(max_length=120)
+    email = models.EmailField()
+    message = models.TextField(max_length=5000)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self) -> str:  # pragma: no cover - simple representation
+        return f"{self.name} <{self.email}>"

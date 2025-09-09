@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact — ModelForm{% endblock %}
+
+{% block content %}
+  <div class="wrap" style="max-width:720px;margin:1rem auto;padding:1rem;">
+    <h1>Contact (ModelForm)</h1>
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {{ form.company }}
+      <div>
+        <label for="id_name">Name</label><br>
+        {{ form.name }}
+        {% if form.name.errors %}<div style="color:#b91c1c;">{{ form.name.errors.0 }}</div>{% endif %}
+      </div>
+      <div>
+        <label for="id_email">Email</label><br>
+        {{ form.email }}
+        {% if form.email.errors %}<div style="color:#b91c1c;">{{ form.email.errors.0 }}</div>{% endif %}
+      </div>
+      <div>
+        <label for="id_message">Message</label><br>
+        {{ form.message }}
+        {% if form.message.errors %}<div style="color:#b91c1c;">{{ form.message.errors.0 }}</div>{% endif %}
+      </div>
+      {% if form.non_field_errors %}<div style="color:#b91c1c;">{{ form.non_field_errors.0 }}</div>{% endif %}
+      <div style="margin-top:1rem;">
+        <button type="submit">Send</button>
+      </div>
+    </form>
+    <p style="margin-top:1rem;font-size:14px;">
+      Other implementations: <a href="{% url 'contact_basic' %}">Manual</a> · <a href="{% url 'contact_form' %}">Django Form</a>
+    </p>
+  </div>
+{% endblock %}

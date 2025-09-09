@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Message sent{% endblock %}
+
+{% block content %}
+  <div class="wrap" style="max-width:720px;margin:2rem auto;padding:1rem;">
+    <h1>Thanks!</h1>
+    <p>Your message has been received. We'll get back to you soon.</p>
+    <p>
+      Send another via <a href="{% url 'contact_basic' %}">Manual</a>,
+      <a href="{% url 'contact_form' %}">Form</a>, or
+      <a href="{% url 'contact_modelform' %}">ModelForm</a>.
+    </p>
+  </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact — Basic{% endblock %}
+
+{% block content %}
+  <div class="wrap" style="max-width:720px;margin:1rem auto;padding:1rem;">
+    <h1>Contact (Manual)</h1>
+    <p>This page demonstrates a manually validated form.</p>
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <input type="hidden" name="company" value="">
+
+      <div>
+        <label for="id_name">Name</label><br>
+        <input id="id_name" name="name" type="text" value="{{ data.name|default:'' }}" required>
+        {% if errors.name %}<div style="color:#b91c1c;">{{ errors.name.0 }}</div>{% endif %}
+      </div>
+      <div>
+        <label for="id_email">Email</label><br>
+        <input id="id_email" name="email" type="email" value="{{ data.email|default:'' }}" required>
+        {% if errors.email %}<div style="color:#b91c1c;">{{ errors.email.0 }}</div>{% endif %}
+      </div>
+      <div>
+        <label for="id_message">Message</label><br>
+        <textarea id="id_message" name="message" rows="6" required>{{ data.message|default:'' }}</textarea>
+        {% if errors.message %}<div style="color:#b91c1c;">{{ errors.message.0 }}</div>{% endif %}
+      </div>
+  {% if errors.non_field_errors %}<div style="color:#b91c1c;">{{ errors.non_field_errors.0 }}</div>{% endif %}
+      <div style="margin-top:1rem;">
+        <button type="submit">Send</button>
+      </div>
+    </form>
+    <p style="margin-top:1rem;font-size:14px;">
+      Other implementations: <a href="{% url 'contact_form' %}">Django Form</a> · <a href="{% url 'contact_modelform' %}">ModelForm</a>
+    </p>
+  </div>
+{% endblock %}
